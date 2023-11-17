@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Security Preferences</title>
+</head>
+<body>
+
+<form action="/submit-preferences" method="post">
+  <h1>Home Security System Preferences</h1>
+  
+  <!-- Arm/Disarm Immediately -->
+  <fieldset>
+    <legend>Immediate Actions:</legend>
+    <label for="arm-system">
+      <input type="radio" id="arm-system" name="immediate-action" value="arm">
+      Arm System Immediately
+    </label><br>
+    <label for="disarm-system">
+      <input type="radio" id="disarm-system" name="immediate-action" value="disarm">
+      Disarm System Immediately
+    </label>
+  </fieldset>
+  
+  <!-- Automatic Activation Times -->
+  <fieldset>
+    <legend>Automatic Activation Times:</legend>
+    <label for="activation-start">Activate From:</label>
+    <input type="time" id="activation-start" name="activation-start" required>
+    
+    <label for="activation-end">To:</label>
+    <input type="time" id="activation-end" name="activation-end" required>
+  </fieldset>
+  
+  <!-- Notification Preferences -->
+  <fieldset>
+    <legend>Notification Preferences:</legend>
+    <label for="email-notification">Email to notify in case of intrusion:</label>
+    <input type="email" id="email-notification" name="email-notification" placeholder="example@example.com" required>
+  </fieldset>
+  
+  <!-- Submit Button -->
+  <button type="submit">Save Preferences</button>
+</form>
+
+</body>
+</html>
