@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage </title>
+</head>
+<body>
+
+<form action="/submit-preferences" method="post">
+  <h1>Home Security System Preferences</h1>
+  
+  <!-- Arm/Disarm Immediately -->
+  <fieldset>
+    <legend>Immediate Actions:</legend>
+    <label for="arm-system">
+      <input type="radio" id="arm-system" name="immediate-action" value="arm">
+      Arm System Immediately
+    </label><br>
+    <label for="disarm-system">
+      <input type="radio" id="disarm-system" name="immediate-action" value="disarm">
+      Disarm System Immediately
+    </label>
+  </fieldset>
+  
+  <!-- Submit Button -->
+  <button type="submit">Save Preferences</button>
+</form>
+
+</body>
+</html>
