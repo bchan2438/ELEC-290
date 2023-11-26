@@ -3,44 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Homepage </title>
+<title>Homepage</title>
 </head>
 <body>
 
   <div class="title">
-    <h1 style="text-align:center">
-      Fort Knocks
-    </h1>
-
+    <h1 style="text-align:center">Fort Knocks</h1>
   </div>
 
-<form action="/submit-preferences" method="post">
-  <h1>Home Security System Preferences</h1>
-  
-  <!-- Arm/Disarm Immediately -->
-  <fieldset>
-    <legend>Immediate Actions:</legend>
-    <label for="arm-system">
-      <input type="radio" id="arm-system" name="immediate-action" value="arm">
-      Arm System Immediately
-    </label><br>
-    <label for="disarm-system">
-      <input type="radio" id="disarm-system" name="immediate-action" value="disarm">
-      Disarm System Immediately
-    </label>
-  </fieldset>
-  
-  <!-- Submit Button -->
-  <button type="submit">Save Preferences</button>
-</form>
-<A href="./settings.html">Settings</A>
-<form id="sign out">
-  <A href="./index.html">
-  <input type="submit" value="Sign Out">
-  </A>
-</form>
+  <!-- System Status Text -->
+  <p id="system-status-text" style="text-align:center; font-size:20px;">
+    System Status: <span id="system-status">Disarmed</span>
+  </p>
 
-<script src="./index.js"></script> <!-- Link to the JavaScript file -->
+  <form id="immediate-action-form">
+    <h1>Home Security System Preferences</h1>
+    
+    <!-- Arm/Disarm Immediately -->
+    <fieldset>
+      <legend>Immediate Actions:</legend>
+      <label for="arm-system">
+        <input type="radio" id="arm-system" name="immediate-action" value="arm">
+        Arm System Immediately
+      </label><br>
+      <label for="disarm-system">
+        <input type="radio" id="disarm-system" name="immediate-action" value="disarm">
+        Disarm System Immediately
+      </label>
+    </fieldset>
+    
+    <!-- Submit Button -->
+    <button type="submit">Save Preferences</button>
+  </form>
+  
+  <a href="./settings.html">Settings</a>
+  <form id="sign-out-form">
+    <a href="./index.html">
+    <input type="submit" value="Sign Out">
+    </a>
+  </form>
+
+  <script src="./index.js"></script>
 
 </body>
 </html>
