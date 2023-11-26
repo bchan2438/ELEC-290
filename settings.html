@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form action="/submit-preferences" method="post">
+<form id="preferences-form" action="/submit-preferences" method="post">
   <h1>Home Security System Preferences</h1>
   
   <!-- Automatic Activation Times -->
@@ -30,6 +30,19 @@
   <!-- Submit Button -->
   <button type="submit">Save Preferences</button>
 </form>
+
+<button onclick="window.location.href='./Homepage.html';">Go back to homepage</button>
+
+<!--Some JavaScript here to direct the submission of the form to index.js.-->
+<script>
+  document.getElementById('preferences-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Perform the save action here, for example, sending data to the server or saving to local storage.
+    
+    // After saving preferences, redirect back to the settings page
+    window.location.href = './settings.html';
+  });
+</script>
 
 </body>
 </html>
