@@ -2,15 +2,17 @@
 
 // Function definitions for arming and disarming the system
 function armSystem() {
+    // Add your actual code to arm the system here
     console.log('System armed.');
     updateSystemStatus('Armed');
-    // Add actual code to arm the system here
+    
   }
   
   function disarmSystem() {
+    // Add your actual code to disarm the system here
     console.log('System disarmed.');
     updateSystemStatus('Disarmed');
-    // Add actual code to disarm the system here
+    
   }
   
   // Update the system status on the homepage
@@ -22,11 +24,30 @@ function armSystem() {
     localStorage.setItem('systemStatus', status);
   }
   
+  // Update the display of activation times and current time
+  function updateTimesDisplay() {
+    const currentTimeElement = document.getElementById('current-time');
+    const activationStartDisplayElement = document.getElementById('activation-start-display');
+    const activationEndDisplayElement = document.getElementById('activation-end-display');
+  
+    if (currentTimeElement) {
+      const now = new Date();
+      currentTimeElement.textContent = now.toLocaleTimeString(); // Display current time
+    }
+  
+    if (activationStartDisplayElement && activationEndDisplayElement) {
+      const activationStart = localStorage.getItem('activationStart') || 'Not Set';
+      const activationEnd = localStorage.getItem('activationEnd') || 'Not Set';
+      activationStartDisplayElement.textContent = activationStart;
+      activationEndDisplayElement.textContent = activationEnd;
+    }
+  }
+  
   // Function to check system status based on the activation times
   function checkSystemStatus() {
     const activationStart = localStorage.getItem('activationStart');
     const activationEnd = localStorage.getItem('activationEnd');
-    
+  
     if (!activationStart || !activationEnd) {
       // If times are not set, or settings have not been saved yet, default to disarmed
       updateSystemStatus('Disarmed');
@@ -56,7 +77,8 @@ function armSystem() {
   
   // Event listener for form submission on Homepage
   document.addEventListener('DOMContentLoaded', function() {
-    // Update the system status text on load if element exists
+    // Update the times and system status text on load
+    updateTimesDisplay();
     const systemStatus = localStorage.getItem('systemStatus');
     updateSystemStatus(systemStatus || 'Disarmed');
   
@@ -73,6 +95,9 @@ function armSystem() {
         }
       });
     }
+  
+    // Set an interval to update the current time every second
+    setInterval(updateTimesDisplay, 1000);
   
     // Set an interval to check the system status every minute
     setInterval(checkSystemStatus, 60000);
