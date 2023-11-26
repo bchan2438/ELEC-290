@@ -1,19 +1,29 @@
 // index.js
 
 // Function definitions for arming and disarming the system
-function armSystem() {
-    // Add your actual code to arm the system here
-    console.log('System armed.');
-    updateSystemStatus('Armed');
-    
-  }
+function submitForm() {
+  // Get the selected radio button with the name "immediate-action"
+  var selectedValue = document.querySelector('input[name="immediate-action"]:checked');
   
-  function disarmSystem() {
-    // Add your actual code to disarm the system here
-    console.log('System disarmed.');
-    updateSystemStatus('Disarmed');
-    
+  // Check if a radio button is selected
+  if (selectedValue) {
+    // Output the selected value (1 for arm, 0 for disarm) to the console
+    console.log(selectedValue.value);
+    if(selectedValue.value){
+      updateSystemStatus('Armed');
+    }
+    else{
+      updateSystemStatus('Disarmed');
+    }
+
+    // Submit the form with the id "preferences-form" to the server
+    document.getElementById('preferences-form').submit();
+  } else {
+    // If no radio button is selected, display an alert
+    alert("Please select an option before submitting.");
   }
+}
+
   
   // Update the system status on the homepage
   function updateSystemStatus(status) {
