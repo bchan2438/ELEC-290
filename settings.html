@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form action="/submit-preferences" method="post">
+<form id="preferences-form" action="#" method="post">
   <h1>Home Security System Preferences</h1>
   
   <!-- Automatic Activation Times -->
@@ -30,6 +30,28 @@
   <!-- Submit Button -->
   <button type="submit">Save Preferences</button>
 </form>
+
+<!-- Go Back Button -->
+<button onclick="location.href='./Homepage.html';">Go back to homepage</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('preferences-form');
+  
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const activationStart = document.getElementById('activation-start').value;
+    const activationEnd = document.getElementById('activation-end').value;
+
+    localStorage.setItem('activationStart', activationStart);
+    localStorage.setItem('activationEnd', activationEnd);
+
+    // Redirect back to the homepage where the updated times can take effect.
+    window.location.href = './Homepage.html';
+  });
+});
+</script>
 
 </body>
 </html>
