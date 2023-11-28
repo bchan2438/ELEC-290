@@ -8,8 +8,16 @@ function submitForm() {
   // Check if a radio button is selected
   if (selectedValue) {
     // Output the selected value (1 for arm, 0 for disarm) to the console
-    console.log(selectedValue.value);
-    if(selectedValue.value){
+    var value;
+    if(selectedValue.value == "arm"){
+      value = 1;
+    }
+    else{
+      value = 0;
+    }
+    console.log(value);
+
+    if(selectedValue.value == "arm"){
       updateSystemStatus('Armed');
     }
     else{
