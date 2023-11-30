@@ -1,13 +1,13 @@
 // index.js
 
-// Function definitions for arming and unarming the system
+// Function definitions for arming and disarming the system
 function submitForm() {
   // Get the selected radio button with the name "immediate-action"
   var selectedValue = document.querySelector('input[name="immediate-action"]:checked');
   
   // Check if a radio button is selected
   if (selectedValue) {
-    // Output the selected value (1 for arm, 0 for unarm) to the console
+    // Output the selected value (1 for arm, 0 for disarm) to the console
     var value;
     if(selectedValue.value == "arm"){
       value = 1;
@@ -21,7 +21,7 @@ function submitForm() {
       updateSystemStatus('Armed');
     }
     else{
-      updateSystemStatus('Unarmed');
+      updateSystemStatus('Disarmed');
     }
 
     // Submit the form with the id "preferences-form" to the server
@@ -67,8 +67,8 @@ function submitForm() {
     const activationEnd = localStorage.getItem('activationEnd');
   
     if (!activationStart || !activationEnd) {
-      // If times are not set, or settings have not been saved yet, default to unarmed
-      updateSystemStatus('Unarmed');
+      // If times are not set, or settings have not been saved yet, default to disarmed
+      updateSystemStatus('Disarmed');
       return;
     }
   
@@ -85,11 +85,11 @@ function submitForm() {
     const [endHours, endMinutes] = activationEnd.split(':');
     end.setHours(endHours, endMinutes, 0, 0);
   
-    // Arm or unarm the system based on the current time
+    // Arm or disarm the system based on the current time
     if (now >= start && now < end) {
       armSystem();
     } else {
-      unarmSystem();
+      disarmSystem();
     }
   }
   
@@ -98,7 +98,7 @@ function submitForm() {
     // Update the times and system status text on load
     updateTimesDisplay();
     const systemStatus = localStorage.getItem('systemStatus');
-    updateSystemStatus(systemStatus || 'Unarmed');
+    updateSystemStatus(systemStatus || 'Disarmed');
   
     // Listener for the immediate actions form
     const immediateActionForm = document.getElementById('immediate-action-form');
@@ -108,8 +108,8 @@ function submitForm() {
         const action = document.querySelector('input[name="immediate-action"]:checked').value;
         if (action === 'arm') {
           armSystem();
-        } else if (action === 'unarm') {
-          unarmSystem();
+        } else if (action === 'disarm') {
+          disarmSystem();
         }
       });
     }
